@@ -16,7 +16,7 @@
 
 3. Web Scraping Engine - You will need to download a chromedriver for this engine. Make sure that the driver version and your current version of chrome match. Go to https://chromedriver.chromium.org/downloads for downloads and more information. <br> 
 Parameters, in order, are:
-    * Driver Path (string): This is the path to the chrome driver. If you cannot find the path, use `which chromedriver` in your terminal. 
+    * Driver Path (string): This is the path to the chrome driver. If you cannot find the path, use `which chromedriver` in your terminal. <br>
     *Note: If the chromedriver will not open and you get an error from your mac along the lines of 'cannot detect for malware', use the command `xattr -d com.apple.quarantine /usr/local/bin/chromedriver` in your terminal to lift this mac quarantine*
     * Urls (list of strings): This is a list of urls you want to scrape. Make sure to check the 'view page source' from Chrome to see if your information can be easily scraped!
     * HTML Tag Object Tuples (list of tuples): This parameter may be the most confusing. These are the guidelines dictating what *exactly* you are scraping in terms of HTML tags. Let's say you were scraping names from a site. All the names were under div tags with `class = person_names`. Within that div, there is a p tag that contains the actual name text. So, you would start with the first two parameters, which are going to be the parent div and how it is classified. Then, you include the actual tag you want to scrape data from. EXAMPLE: `('class', 'person_names', 'p')`. Remember, **_these have to be strings_**.
@@ -28,15 +28,15 @@ Parameters, in order, are:
 
 **Helper Functions** <br>
 
-1. Import all your data analysis and visualization needs. Includes numpy, pandas, matplotlib, seaborn, scikit-learn, and more! <br>
+1. Impute null values as -0.00001 and set a viewing function to show these values.<br>
 
-2. Create a stylized dataframe viewer. See all of your columns with your specified color palette. Can also toggle null highlighting, which will turn all null value cells red! <br>
+2. Create a stylized dataframe viewer. See all of your columns with your specified color palette. Can also toggle null highlighting, which will turn all null value cells red and negative value highlighting that is created in the helper function above!<br>
 
-3. 
+3. Save your visualizations as images. <br>
 
-4.
+4. Create a sub dataset with specified columns for a detailed and less cluttered analysis. <br>
 
-5.
+5. Get basic statistical information on your dataset. Create a heatmap with a correlation matrix and see basic statistical values for each column. <br>
 
 6.
 <br>

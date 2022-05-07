@@ -4,6 +4,7 @@ import numpy as np
 
 # Data Visualization
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 from DS_engines.analysis_engine import AnalysisPrototype
 
@@ -109,3 +110,119 @@ class VisualizationPrototype(object):
         plt.show()
         print(f'Average value count: {(np.array(list(data[i].values()))).mean()}')
         print(f'Average data point: {(np.array(list(data[i].keys()))).mean()}')
+
+
+    def Q1(self, dataset, x_arg, y_arg, title, toggle_quantities=False, stacked=False, save=False):
+        """ Custom function to visualize answers for Q1 of the OITA project. """
+        # Instantiate grid spaces across bar chart for both title and plot
+        if stacked is True:
+            figure = plt.figure(figsize=(12, 12))
+            grids = figure.add_gridspec(2, 1)
+            grids.update(wspace=0.3, hspace=0.15)
+            ax0 = figure.add_subplot(grids[0, 0])
+            ax1 = figure.add_subplot(grids[1, 0])
+        else:
+            figure = plt.figure(figsize=(18, 7))
+            grids = figure.add_gridspec(1, 2)
+            grids.update(wspace=0.3, hspace=0.15)
+            ax0 = figure.add_subplot(grids[0, 0])
+            ax1 = figure.add_subplot(grids[0, 1])
+        
+        # Create and set title grid
+        TITLE_AX0 = title
+        
+        ax0.text(0.5, 0.5,
+                TITLE_AX0,
+                horizontalalignment="center",
+                verticalalignment="center",
+                fontsize=28,
+                fontweight="bold",
+                fontfamily="serif",
+                color="#000000")
+        
+        # Remove chart labels outline from title grid
+        ax0.set_xticklabels([]); ax0.set_yticklabels([])
+        ax0.tick_params(left=False, bottom=False)
+        
+        # Set bar chart in second grid space and remove spine
+        ax_states = ax1
+        barp = sns.barplot(x=x_arg,
+                          y=y_arg,
+                          data=dataset,
+                          ax=ax_states,
+                          palette="crest")
+        sns.despine()
+        
+        # Obtain and set quantitative values on top of bars
+        if toggle_quantities is True:
+          for patch in barp.patches:
+              barp.annotate(format(patch.get_height(), ".2f"), (patch.get_x() + patch.get_width() / 2.,
+                                                              patch.get_height()), ha="center", va="center", 
+                            xytext=(0, 10), textcoords="offset points")
+        
+        # Remove grid spinal outline from title grid
+        for orientation in ["top", "left", "bottom", "right"]:
+            ax0.spines[orientation].set_visible(False)
+
+        # Save file
+        if save is True:
+            SAVEPATH = f"Q1_Visualization{title}.png"
+            plt.savefig(SAVEPATH, facecolor="white")
+        
+        # Render visualization
+        plt.show()
+        return
+    
+    
+    def Q2(self, dataset, x_arg, y_arg, title, stacked=False, save=False):
+        """ Plotting method to obtain visual answer to Inquiry #2. """
+        """ Custom function to visualize answers for Q2 of the OITA project. """
+        # Instantiate grid spaces across scatter plot for both title and plot
+        if stacked is True:
+            figure = plt.figure(figsize=(12, 12))
+            grids = figure.add_gridspec(2, 1)
+            grids.update(wspace=0.3, hspace=0.15)
+            ax0 = figure.add_subplot(grids[0, 0])
+            ax1 = figure.add_subplot(grids[1, 0])
+        else:
+            figure = plt.figure(figsize=(18, 7))
+            grids = figure.add_gridspec(1, 2)
+            grids.update(wspace=0.3, hspace=0.15)
+            ax0 = figure.add_subplot(grids[0, 0])
+            ax1 = figure.add_subplot(grids[0, 1])
+        
+        # Create and set title grid
+        TITLE_AX0 = title
+        ax0.text(0.5, 0.5,
+                TITLE_AX0,
+                horizontalalignment="center",
+                verticalalignment="center",
+                fontsize=28,
+                fontweight="bold",
+                fontfamily="serif",
+                color="#000000")
+        
+        # Remove chart labels outline from title grid
+        ax0.set_xticklabels([]); ax0.set_yticklabels([])
+        ax0.tick_params(left=False, bottom=False)
+        
+        # Set bar chart in second grid space and remove spine
+        ax_scattered = ax1
+        scap = sns.scatterplot(x=x_arg, y=y_arg, data=dataset, ax=ax_scattered, hue="state", alpha=0.5, palette="dark")
+        scap.legend(loc="center left", bbox_to_anchor=(1.25, 0.5), ncol=1)
+        sns.despine()
+        
+        # Remove grid spinal outline from title grid
+        ax0.spines["top"].set_visible(False)
+        ax0.spines["left"].set_visible(False)
+        ax0.spines["bottom"].set_visible(False)
+        ax0.spines["right"].set_visible(False)
+
+        # Save file
+        if save is True:
+            SAVEPATH = f"Q2_Visualization_{title}.png"
+            plt.savefig(SAVEPATH, facecolor="white")
+
+        # Render visualization
+        plt.show()
+        return

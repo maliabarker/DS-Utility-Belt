@@ -5,8 +5,10 @@
     # with thing you wanna import and what you wanna import it as ex: (numpy, np)
 
 # HELPER FUNCTION 2
+    # create a stylized dataframe viewer
 
 # HELPER FUNCTION 3
+    #
 
 # HELPER FUNCTION 4
 

@@ -151,3 +151,5 @@ dmypy.json
 
 .DS_STORE
 
+celestial_events.csv
+.celestial_events.csv

@@ -28,22 +28,24 @@ Parameters, in order, are:
 
 **Helper Functions** <br>
 
-1. Impute null values as -0.00001 and set a viewing function to show these values.<br>
+1. Impute null values as -0.00001.<br>
 
-2. Create a stylized dataframe viewer. See all of your columns with your specified color palette. Can also toggle null highlighting, which will turn all null value cells red and negative value highlighting that is created in the helper function above!<br>
+2. Set a viewing function for a stylized dataframe to show values less than zero. Useful if imputing null values using the method above. <br>
 
-3. Save your visualizations as images. <br>
+3. Create a stylized dataframe viewer. See all of your columns with your specified color palette. Can also toggle null highlighting, which will turn all null value cells red and negative value highlighting that is created in the helper function above!<br>
 
-4. Create a sub dataset with specified columns for a detailed and less cluttered analysis. <br>
+4. Save your visualizations as images. <br>
 
-5. Get basic statistical information on your dataset. Create a heatmap with a correlation matrix and see basic statistical values for each column. <br>
+5. Create a sub dataset with specified columns for a detailed and less cluttered analysis. <br>
 
-6.
+6. Get basic statistical information on your dataset. Create a heatmap with a correlation matrix and see basic statistical values for each column. <br>
 <br>
 
 **Glossary** <br>
 
 Includes terms that I just can't seem to remember. Mostly statistical test information.
+Included: 
+    Descriptive Statistics, Inferential Statistics, Z-Scores, Hypothesis Tests, P-Value, α-Value, One-Tailed Test, Two-Tailed Test, Z-Distributions, T-Distributions, Normality Tests, Correlation Tests, Stationarity Tests, Parametric Test, and Non-Parametric Test.
 
 <br>
 

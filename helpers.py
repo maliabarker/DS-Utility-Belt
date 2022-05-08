@@ -3,11 +3,13 @@ import matplotlib.pyplot as plt
 
 # HELPER FUNCTION 1
 #   set null values to -0.00001
-#   highlights negative numbers (useful if imputing null values as negative nums)
 def impute_null_as_neg(dataframe):
     dataframe.fillna(-0.00001, inplace=True)
     return dataframe
 
+# HELPER FUNCTION 2
+#   highlights negative numbers (useful if imputing null values as negative nums)
+#   use with the stylized dataframe
 def highlight_neg_num(cell):
     if type(cell) != str and cell < 0 :
         return 'background: #fa8072; color:black'
@@ -15,8 +17,8 @@ def highlight_neg_num(cell):
         # do i need a background color here or will it just not do anything?
         return
 
-# HELPER FUNCTION 2
-    # create a stylized dataframe viewer
+# HELPER FUNCTION 3
+#   create a stylized dataframe viewer
 def create_stylized_df(dataframe, num_rows, background_color, text_color='black', border_color='white', highlight_null=False, highlight_neg=False):
     VIEWING_PROPERTIES = {
         "background-color": background_color,
@@ -33,23 +35,25 @@ def create_stylized_df(dataframe, num_rows, background_color, text_color='black'
     return stylized_dataframe
         
 
-# HELPER FUNCTION 3
-    # save a visualization as an image
-    # takes in parameters:
-    #   filename (the name of the img file to be saved)
-    #   visualization plot (a matplotlib.pyplot)
+# HELPER FUNCTION 4
+#   save a visualization as an image
+#   takes in parameters:
+#       filename (the name of the img file to be saved)
+#       visualization plot (a matplotlib.pyplot)
 def save_visualization_as_img(filename, visualization_plt):
     SAVEPATH = filename
     visualization_plt.savefig(SAVEPATH, facecolor="white")
 
 
-# HELPER FUNCTION 4
+# HELPER FUNCTION 5
+#   creates subset of data in a new dataframe to work with
 def create_sub_dataset(dataframe, new_df_name, col_list):
     new_df_name = dataframe[col_list]
     new_df_name = new_df_name.reset_index()
     return new_df_name
 
-# HELPER FUNCTION 5
+# HELPER FUNCTION 6
+#   returns the basic statistics of a dataset
 def get_basic_stats(dataset):
     # Initialize plotting boundaries for larger matrixes
     plt.figure(figsize=(24, 18))
@@ -66,8 +70,3 @@ def get_basic_stats(dataset):
     dataset.describe()
     dataset.cov()
     dataset.corr()
-
-
-# HELPER FUNCTION 6
-
-

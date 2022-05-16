@@ -70,3 +70,6 @@ def get_basic_stats(dataset):
     dataset.describe()
     dataset.cov()
     dataset.corr()
+
+def convert_value_counts_to_df(dataset, column):
+    return dataset[column].value_counts().rename_axis('unique_values').reset_index(name='counts')
